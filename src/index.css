@@ -1,0 +1,55 @@
+:root {
+  /* Tokyo Night Storm inspired palette */
+  --bg-primary: #1f2335;
+  --bg-secondary: #1a1d2d;
+  --bg-tertiary: #151724;
+  --bg-gradient-primary: linear-gradient(135deg, #1f2335 0%, #161829 100%);
+  --bg-gradient-secondary: linear-gradient(135deg, #1a1d2d 0%, #11121b 100%);
+  --surface-calendar-default: linear-gradient(145deg, #1f2335 0%, #1a1c2b 100%);
+  --surface-sidebar-default: linear-gradient(145deg, #1a1d2d 0%, #161829 100%);
+  --surface-weekdays-default: linear-gradient(145deg, #232846 0%, #1a1f33 100%);
+  --surface-calendar-grid-default: linear-gradient(145deg, #181a29 0%, #11131f 100%);
+  --surface-activity-list-default: linear-gradient(145deg, #20243a 0%, #121422 100%);
+  --surface-calendar: var(--surface-calendar-custom, var(--surface-calendar-default));
+  --surface-sidebar: var(--surface-sidebar-custom, var(--surface-sidebar-default));
+  --surface-weekdays: var(--surface-weekdays-custom, var(--surface-weekdays-default));
+  --surface-calendar-grid: var(--surface-calendar-grid-custom, var(--surface-calendar-grid-default));
+  --surface-activity-list: var(--surface-activity-list-custom, var(--surface-activity-list-default));
+  --text-primary: #c0caf5;
+  --text-secondary: #a9b1d6;
+  --text-muted: #7c82b3;
+  --border-color: #2f3654;
+  --border-light: #3b4266;
+  --border-hover: #4c568a;
+  --accent-primary: #7aa2f7;
+  --accent-secondary: #bb9af7;
+  --accent-gradient: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+  --accent-light: rgba(122, 162, 247, 0.2);
+  --accent-secondary-light: rgba(187, 154, 247, 0.18);
+  --success-color: #9ece6a;
+  --danger-color: #f7768e;
+  --danger-hover: #c36179;
+  --warning-color: #ff9e64;
+  --shadow-light: rgba(7, 9, 18, 0.35);
+  --shadow-medium: rgba(7, 9, 18, 0.55);
+  --shadow-heavy: rgba(0, 0, 0, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-gradient-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,17 @@
+services:
+  slotb:
+    build: .
+    container_name: slotb
+    restart: unless-stopped
+    environment:
+      - PORT=5000
+      - JWT_SECRET=${JWT_SECRET:-change-me}
+      - DATABASE_PATH=/data/slotb.db
+    ports:
+      - "${SLOTB_HOST_PORT:-5080}:5000"
+    volumes:
+      - slotb-data:/data
+      - ./config:/app/config
+      - ./uploads:/app/uploads
+volumes:
+  slotb-data:
