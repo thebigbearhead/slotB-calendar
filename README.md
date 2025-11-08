@@ -1,4 +1,8 @@
-<img src="https://raw.githubusercontent.com/thebigbearhead/slotB-calendar/refs/heads/main/public/images/logo.png" width="100" height="100"></img>
+<div id="pictures">
+<img src="https://raw.githubusercontent.com/thebigbearhead/slotB-calendar/refs/heads/main/public/images/logo.png" width="220" height="220"></img>
+<img src="https://raw.githubusercontent.com/thebigbearhead/slotB-calendar/refs/heads/main/public/banner.png" width"410" height="230"></img>
+</div>
+
 # 🎨 sLOt[B] - Photoshoot Booking Calendar
 
 > A beautiful, modern appointment calendar for creative studios with elegant warm theming
