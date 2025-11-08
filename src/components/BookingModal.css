@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 40px var(--shadow-heavy);
-  border: 1px solid var(--border-light);
+  border: none;
 }
 
 .modal-header {
@@ -86,12 +86,12 @@
 .form-group select {
   width: 100%;
   padding: 10px 12px;
-  border: 2px solid var(--border-color);
+  border: 2px solid rgba(128, 128, 128, 0.3);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
+  background: #FFFFFF;
+  color: #2D2D2D;
   box-sizing: border-box;
 }
 
@@ -105,7 +105,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--text-muted);
+  color: #888888;
 }
 
 .form-group textarea {
@@ -130,8 +130,6 @@
   gap: 12px;
   justify-content: flex-end;
   padding: 16px 24px;
-  border-top: 1px solid var(--border-light);
-  background: var(--bg-secondary);
   border-radius: 0 0 12px 12px;
 }
 
@@ -150,7 +148,7 @@
 
 .btn-primary {
   background: var(--accent-primary);
-  color: white;
+  color: var(--text-on-dark);
 }
 
 .btn-primary:hover {
@@ -173,13 +171,13 @@
 
 .btn-danger {
   background: var(--danger-color);
-  color: white;
+  color: var(--text-on-dark);
 }
 
 .btn-danger:hover {
   background: var(--danger-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(247, 118, 142, 0.3);
+  box-shadow: 0 4px 12px var(--danger-light);
 }
 
 .btn:disabled {

@@ -6,8 +6,8 @@ const configPath = path.join(configDir, 'app-config.json');
 
 const defaultConfig = {
   branding: {
-    appTitle: 'Photoshoot Calendar',
-    tagline: 'Plan and track your shoots with Bangkok precision',
+    appTitle: 'sLOt[B]',
+    tagline: 'Book your slot with ease',
     logoUrl: '',
     heroImageUrl: ''
   },

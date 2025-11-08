@@ -1,20 +1,20 @@
 {
   "branding": {
-    "appTitle": "slot[B]",
-    "tagline": "Plan and track your shoots with Bangkok precision",
-    "logoUrl": "",
+    "appTitle": "sLOt[B]",
+    "tagline": "A short, modern mashup of 'Capture' and 'Calendar'",
+    "logoUrl": "/images/logo.png",
     "heroImageUrl": ""
   },
   "theme": {
-    "primaryColor": "#6366f1",
-    "secondaryColor": "#0f172a",
-    "accentColor": "#d76b1d",
-    "surfaceColor": "#0b2951",
-    "surfaceCalendarDark": "#4f2385",
-    "surfaceCalendar": "#cdb398",
-    "surfaceSidebar": "#e7dbf0",
-    "surfaceActivityList": "#edd0fb",
-    "surfaceSidebarDark": "#63557c"
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "surfaceColor": "",
+    "surfaceCalendarDark": "",
+    "surfaceCalendar": "",
+    "surfaceSidebar": "",
+    "surfaceActivityList": "",
+    "surfaceSidebarDark": ""
   },
   "ui": {
     "showActivitySidebar": true,

@@ -132,37 +132,18 @@ const Calendar = () => {
                 <span>{(config.branding?.appTitle || 'PC').slice(0, 2).toUpperCase()}</span>
               )}
             </div>
-            <div>
-              <div className="branding-meta">
-                <div>
-                  <p className="app-title">{config.branding?.appTitle}</p>
-                  <p className="app-tagline">{config.branding?.tagline}</p>
-                </div>
-              </div>
-              <div className="calendar-nav">
-                <button onClick={previousMonth} className="nav-button" aria-label="Previous month">‹</button>
-                <h2 className="month-year">{formatInBangkok(currentDate, 'MMMM yyyy')}</h2>
-                <button onClick={nextMonth} className="nav-button" aria-label="Next month">›</button>
+            <div className="branding-meta">
+              <div>
+                <p className="app-title">{config.branding?.appTitle}</p>
+                <p className="app-tagline">{config.branding?.tagline}</p>
               </div>
             </div>
           </div>
           <div className="user-info">
-            <div className="user-identity">
-              <div className="user-avatar">
-                {user?.profilePicture ? (
-                  <img src={user.profilePicture} alt={user?.username} />
-                ) : (
-                  (user?.firstName || user?.username || 'U').charAt(0).toUpperCase()
-                )}
-              </div>
-              <div className="user-text">
-                <p className="user-name">{[user?.firstName, user?.lastName].filter(Boolean).join(' ') || user?.username}</p>
-                <span className="user-meta">{user?.username}</span>
-              </div>
-            </div>
-            <div className="user-actions">
-              <button onClick={() => setShowProfileModal(true)} className="pill-button">Profile</button>
-              <button onClick={logout} className="logout-button">Logout</button>
+            <div className="calendar-nav">
+              <button onClick={previousMonth} className="nav-button" aria-label="Previous month">‹</button>
+              <h2 className="month-year">{formatInBangkok(currentDate, 'MMMM yyyy')}</h2>
+              <button onClick={nextMonth} className="nav-button" aria-label="Next month">›</button>
             </div>
           </div>
         </div>
@@ -229,7 +210,7 @@ const Calendar = () => {
         )}
       </div>
       
-      {config.ui?.showActivitySidebar !== false && <ActivitySidebar />}
+      {config.ui?.showActivitySidebar !== false && <ActivitySidebar onProfileClick={() => setShowProfileModal(true)} />}
     </div>
   );
 };

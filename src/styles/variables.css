@@ -1,0 +1,278 @@
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║                 sLOt[B] - THEME CONFIGURATION                 ║
+   ║                 🎨 Single Source of Truth for All Colors      ║
+   ╚══════════════════════════════════════════════════════════════╝
+   
+   📚 USAGE GUIDE:
+   --------------
+   This is the ONLY file you need to edit to change colors across
+   the entire application. All components use these CSS variables.
+   
+   🎨 COLOR PALETTES:
+   -----------------
+   Palette 01 (Dark/Red): Coral Pink, Mauve, Deep Purple
+   Palette 02 (Warm):     Warm Beige, Terracotta, Burgundy
+   
+   🔗 HOW IT WORKS:
+   ---------------
+   1. Define colors here as CSS variables (--variable-name)
+   2. Components reference these variables: var(--variable-name)
+   3. Change colors here = Changes everywhere automatically!
+   
+   📖 EXAMPLES:
+   -----------
+   Change primary accent:     --accent-primary: #FF3366;
+   Change sidebar background: --sidebar-content-bg: #8B4367;
+   Change text color:         --text-primary: #FFFFFF;
+   
+   💡 TIP: Use search/replace to change a color everywhere!
+   
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ════════════════════════════════════════════════════════════
+     🎨 PRIMARY COLORS - Main Theme Colors
+     ════════════════════════════════════════════════════════════
+     
+     These are the base colors from both palettes.
+     Used throughout the app for various UI elements.
+     ════════════════════════════════════════════════════════════ */
+  
+  /* 🌸 PALETTE 01 - Dark/Red Theme */
+  --color-coral-pink: #FF3366;       /* Primary accent - Buttons, highlights, active states */
+  --color-mauve: #8B4789;            /* Secondary accent - Gradients, hover effects */
+  --color-deep-purple: #4A3459;      /* Dark surfaces - Backgrounds, cards */
+  --color-dark-gray: #2D2D2D;        /* Darkest base - Deep backgrounds */
+  
+  /* 🌟 PALETTE 02 - Warm Theme */
+  --color-warm-beige: #F4D8A1;       /* Light text on dark backgrounds, warm accents */
+  --color-terracotta: #C07869;       /* Sidebar user card background */
+  --color-burgundy: #8B4367;         /* Sidebar content background */
+  --color-dark-maroon: #4A1F33;      /* Dark warm accent, text on light backgrounds */
+  
+  /* ════════════════════════════════════════════════════════════
+     🎭 BACKGROUND COLORS - Solid & Gradients
+     ════════════════════════════════════════════════════════════
+     
+     Solid backgrounds for simple surfaces.
+     Gradients for depth and visual interest.
+     ════════════════════════════════════════════════════════════ */
+  
+  /* Solid backgrounds */
+  --bg-primary: #2D2D2D;             /* Main app background */
+  --bg-secondary: #3A2A3A;           /* Secondary surfaces, cards */
+  --bg-tertiary: #4A3459;            /* Tertiary surfaces, elevated content */
+  
+  /* Gradient backgrounds - Add depth and dimension */
+  --bg-gradient-primary: linear-gradient(135deg, #4A3459 0%, #2D2D2D 100%);     /* Main gradient */
+  --bg-gradient-secondary: linear-gradient(135deg, #3A2A3A 0%, #2D2D2D 100%);   /* Secondary gradient */
+  --bg-gradient-accent: linear-gradient(135deg, var(--color-coral-pink) 0%, var(--color-mauve) 100%); /* Accent gradient for special elements */
+  
+  /* ════════════════════════════════════════════════════════════
+     📦 SURFACE COLORS - Cards, Panels, Containers
+     ════════════════════════════════════════════════════════════
+     
+     Surfaces are elevated UI elements like cards and panels.
+     These use gradients for a modern, polished look.
+     
+     💡 To customize: Set --surface-*-custom variables
+     ════════════════════════════════════════════════════════════ */
+  
+  /* Default surface gradients - These are the fallback values */
+  --surface-calendar-default: linear-gradient(145deg, #4A3459 0%, #3A2A3A 100%);       /* Calendar container */
+  --surface-sidebar-default: linear-gradient(145deg, #4A1F33 0%, #8B4367 100%);        /* Activity sidebar panel */
+  --surface-weekdays-default: linear-gradient(145deg, #6B3A50 0%, #4A1F33 100%);       /* Weekday header row */
+  --surface-calendar-grid-default: linear-gradient(145deg, #3A2A3A 0%, #2D2D2D 100%);  /* Calendar day grid */
+  --surface-activity-list-default: linear-gradient(145deg, #8B4367 0%, #4A1F33 100%);  /* Activity list items */
+  
+  /* Active surface variables - Uses custom if set, otherwise falls back to default */
+  --surface-calendar: var(--surface-calendar-custom, var(--surface-calendar-default));
+  --surface-sidebar: var(--surface-sidebar-custom, var(--surface-sidebar-default));
+  --surface-weekdays: var(--surface-weekdays-custom, var(--surface-weekdays-default));
+  --surface-calendar-grid: var(--surface-calendar-grid-custom, var(--surface-calendar-grid-default));
+  --surface-activity-list: var(--surface-activity-list-custom, var(--surface-activity-list-default));
+  
+  /* ════════════════════════════════════════════════════════════
+     📝 TEXT COLORS - All Typography
+     ════════════════════════════════════════════════════════════
+     
+     Hierarchy from most to least prominent:
+     primary > secondary > muted
+     ════════════════════════════════════════════════════════════ */
+  
+  --text-primary: #FFFFFF;                    /* Main text - High contrast, most important content */
+  --text-secondary: var(--color-warm-beige);  /* Secondary text - Less prominent but still readable */
+  --text-muted: #B8A8B0;                      /* Muted text - Subtle, supporting information */
+  --text-light: var(--color-warm-beige);      /* Light warm text - Special use cases */
+  --text-on-dark: #FFFFFF;                    /* Text on dark backgrounds - Ensures readability */
+  
+  /* ════════════════════════════════════════════════════════════
+     🔲 BORDER COLORS - Outlines & Dividers
+     ════════════════════════════════════════════════════════════
+     
+     Most borders are transparent for a clean, modern look.
+     Visible borders used sparingly for emphasis.
+     ════════════════════════════════════════════════════════════ */
+  
+  --border-color: transparent;                /* Default border - Clean borderless design */
+  --border-light: transparent;                /* Light borders - Subtle separation when needed */
+  --border-hover: var(--color-coral-pink);    /* Hover state border - Shows interactivity */
+  --border-dark: transparent;                 /* Dark borders - Reserved for strong emphasis */
+  
+  /* ════════════════════════════════════════════════════════════
+     ⭐ ACCENT COLORS - Highlights & Interactive Elements
+     ════════════════════════════════════════════════════════════
+     
+     Used for buttons, links, and interactive elements.
+     Draws user attention to actionable items.
+     ════════════════════════════════════════════════════════════ */
+  
+  --accent-primary: var(--color-coral-pink);           /* Primary action buttons, active states */
+  --accent-secondary: var(--color-mauve);              /* Secondary buttons, less prominent actions */
+  --accent-tertiary: var(--color-terracotta);          /* Tertiary accents, subtle highlights */
+  --accent-gradient: var(--bg-gradient-accent);        /* Gradient accent for special buttons */
+  --accent-light: rgba(255, 51, 102, 0.15);           /* Light transparent accent - Subtle backgrounds */
+  --accent-secondary-light: rgba(139, 71, 137, 0.15); /* Light transparent secondary - Hover states */
+  
+  /* ════════════════════════════════════════════════════════════
+     🚦 STATUS COLORS - Feedback & States
+     ════════════════════════════════════════════════════════════
+     
+     Standard UI status colors for user feedback.
+     Success = Green, Danger = Red, Warning = Orange, Info = Blue
+     ════════════════════════════════════════════════════════════ */
+  
+  /* ✅ Success - Positive actions, completed states */
+  --success-color: #7BCB9E;                   /* Success messages, confirmed bookings */
+  --success-light: rgba(123, 203, 158, 0.15); /* Light success background */
+  
+  /* ❌ Danger - Destructive actions, errors */
+  --danger-color: #FF3366;                    /* Delete buttons, error messages, logout */
+  --danger-hover: #E62E5C;                    /* Danger button hover state - Darker for contrast */
+  --danger-light: rgba(255, 51, 102, 0.15);   /* Light danger background - Error highlights */
+  
+  /* ⚠️ Warning - Caution, pending actions */
+  --warning-color: #FFB366;                   /* Warning messages, pending states */
+  --warning-light: rgba(255, 179, 102, 0.15); /* Light warning background */
+  
+  /* ℹ️ Info - Informational messages */
+  --info-color: #6699FF;                      /* Info messages, tooltips */
+  --info-light: rgba(102, 153, 255, 0.15);    /* Light info background */
+  
+  /* ════════════════════════════════════════════════════════════
+     🌑 SHADOW COLORS - Depth & Elevation
+     ════════════════════════════════════════════════════════════
+     
+     Shadows create depth hierarchy.
+     light < medium < heavy < dark
+     ════════════════════════════════════════════════════════════ */
+  
+  --shadow-light: rgba(255, 51, 102, 0.15);   /* Subtle shadow - Slight elevation */
+  --shadow-medium: rgba(139, 71, 137, 0.25);  /* Medium shadow - Cards, panels */
+  --shadow-heavy: rgba(74, 52, 89, 0.35);     /* Heavy shadow - Modals, dropdowns */
+  --shadow-dark: rgba(45, 45, 45, 0.5);       /* Dark shadow - Maximum elevation */
+  
+  /* ════════════════════════════════════════════════════════════
+     🎯 COMPONENT-SPECIFIC COLORS
+     ════════════════════════════════════════════════════════════
+     
+     Colors unique to specific components.
+     Change these to customize individual parts of the UI.
+     ════════════════════════════════════════════════════════════ */
+  
+  /* 📊 Activity Sidebar - Right panel with recent bookings */
+  --sidebar-header-bg: var(--color-warm-beige);            /* Top header - Warm beige background */
+  --sidebar-user-card-bg: var(--color-terracotta);         /* User profile card - Terracotta */
+  --sidebar-hover-bg: rgba(192, 120, 105, 0.8);           /* User card hover state - Darker terracotta */
+  --sidebar-content-bg: var(--color-burgundy);             /* Main content area - Burgundy */
+  
+  /* 📅 Calendar - Main calendar grid and header */
+  --calendar-header-bg: linear-gradient(135deg, #C07869 0%, #8B4367 100%);  /* Header gradient */
+  --calendar-day-hover: rgba(255, 51, 102, 0.2);           /* Day cell hover - Coral pink transparent */
+  --calendar-day-selected: var(--accent-primary);          /* Selected day - Coral pink */
+  --calendar-day-today: rgba(244, 216, 161, 0.15);        /* Today's date highlight - Beige glow */
+  
+  /* 🔐 Authentication - Login/Register pages */
+  --auth-hero-bg: var(--bg-gradient-accent);               /* Hero section gradient */
+  --auth-card-bg: #3A2A3A;                                 /* Auth form card background */
+  
+  /* ════════════════════════════════════════════════════════════
+     📏 SPACING & SIZING - Consistent Measurements
+     ════════════════════════════════════════════════════════════
+     
+     Use these for consistent spacing throughout the app.
+     xs < sm < md < lg < xl < 2xl
+     ════════════════════════════════════════════════════════════ */
+  
+  /* Spacing scale - For padding, margins, gaps */
+  --spacing-xs: 4px;      /* Extra small - Tight spacing */
+  --spacing-sm: 8px;      /* Small - Close elements */
+  --spacing-md: 16px;     /* Medium - Default spacing */
+  --spacing-lg: 24px;     /* Large - Section spacing */
+  --spacing-xl: 32px;     /* Extra large - Major sections */
+  --spacing-2xl: 48px;    /* 2X large - Page-level spacing */
+  
+  /* Border radius scale - For rounded corners */
+  --radius-sm: 8px;       /* Small radius - Subtle rounding */
+  --radius-md: 12px;      /* Medium radius - Standard buttons */
+  --radius-lg: 16px;      /* Large radius - Cards */
+  --radius-xl: 20px;      /* Extra large - Pills, badges */
+  --radius-2xl: 24px;     /* 2X large - Large containers */
+  
+  /* ════════════════════════════════════════════════════════════
+     ⚡ TRANSITIONS - Animation Timing
+     ════════════════════════════════════════════════════════════
+     
+     Consistent animation speeds for smooth interactions.
+     fast < normal < slow
+     ════════════════════════════════════════════════════════════ */
+  
+  --transition-fast: 0.15s ease;      /* Fast - Quick feedback (hover states) */
+  --transition-normal: 0.3s ease;     /* Normal - Standard transitions (modals) */
+  --transition-slow: 0.5s ease;       /* Slow - Dramatic effects (page transitions) */
+}
+
+/* ════════════════════════════════════════════════════════════════
+   🌙 DARK THEME OVERRIDE (Optional Future Enhancement)
+   ════════════════════════════════════════════════════════════════
+   
+   Uncomment and customize for alternate dark mode support.
+   Currently using dark theme by default.
+   
+   USAGE: Add data-theme="dark" to <body> element
+   ════════════════════════════════════════════════════════════════ */
+
+/*
+[data-theme="dark"] {
+  --bg-primary: var(--color-dark-gray);
+  --bg-secondary: var(--color-deep-purple);
+  --text-primary: var(--color-warm-beige);
+  --text-secondary: #F4D8A1;
+}
+*/
+
+/* ════════════════════════════════════════════════════════════════
+   🎨 CUSTOMIZATION QUICK START
+   ════════════════════════════════════════════════════════════════
+   
+   Want to create your own theme? Here's what to change:
+   
+   1️⃣ PRIMARY COLORS (Lines 40-47)
+      - Change the 6 main palette colors to your brand colors
+   
+   2️⃣ ACCENT COLORS (Lines 127-132)
+      - Update accent-primary for your main action color
+   
+   3️⃣ SIDEBAR COLORS (Lines 185-188)
+      - Customize the activity sidebar appearance
+   
+   4️⃣ SAVE & REFRESH
+      - Changes apply instantly in development mode!
+   
+   📝 NEED HELP?
+   - See PROJECT_GUIDE.md for detailed instructions
+   - All colors are documented with comments above
+   - Search for color names to find where they're used
+   
+   ════════════════════════════════════════════════════════════════ */
+

@@ -75,21 +75,10 @@ const Register = ({ onToggleMode }) => {
 
   return (
     <div className={containerClass}>
-      <div className="auth-hero">
-        {config.branding?.logoUrl && (
-          <img src={config.branding.logoUrl} alt="logo" className="hero-logo" />
-        )}
-        <h1>{config.branding?.appTitle}</h1>
-        <p className="hero-tagline">{config.branding?.tagline}</p>
-        {config.branding?.heroImageUrl && (
-          <img
-            src={config.branding.heroImageUrl}
-            alt="hero"
-            className="hero-image"
-          />
-        )}
-      </div>
       <div className="auth-card">
+        {config.branding?.logoUrl && (
+          <img src={config.branding.logoUrl} alt="logo" className="auth-logo" />
+        )}
         <h2>Register for {config.branding?.appTitle}</h2>
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">

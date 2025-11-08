@@ -16,8 +16,8 @@ const ICON_CLASS = {
   upcoming: 'fa-arrow-trend-up'
 };
 
-const ActivitySidebar = () => {
-  const { user, token } = useAuth();
+const ActivitySidebar = ({ onProfileClick }) => {
+  const { user, token, logout } = useAuth();
   const [recentActivity, setRecentActivity] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -102,7 +102,7 @@ const ActivitySidebar = () => {
   };
 
   const renderUserCard = () => (
-    <div className="sidebar-user-card">
+    <div className="sidebar-user-card" onClick={onProfileClick}>
       <div className="card-avatar">
         {user?.profilePicture ? (
           <img src={user.profilePicture} alt={user?.username} />
@@ -234,6 +234,25 @@ const ActivitySidebar = () => {
               </div>
               <div className="stat-label">Total</div>
             </div>
+          </div>
+        </div>
+        
+        <div className="sidebar-footer">
+          <button onClick={logout} className="sidebar-logout-button">
+            <i className="fas fa-sign-out-alt"></i> Logout
+          </button>
+          <div className="footer-info">
+            <span className="version-text">v0.1.7</span>
+          </div>
+          <div className="footer-info">
+            <a 
+              href="https://github.com/thebigbearhead" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="github-link"
+            >
+              <i className="fab fa-github"></i>
+            </a>
           </div>
         </div>
       </div>

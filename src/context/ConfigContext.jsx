@@ -2,9 +2,9 @@ import React, { createContext, useContext, useCallback, useEffect, useState } fr
 
 const defaultConfig = {
   branding: {
-    appTitle: 'Photoshoot Calendar',
-    tagline: 'Plan and track your shoots with Bangkok precision',
-    logoUrl: '',
+    appTitle: 'sLOt[B]',
+    tagline: 'Book your slot with ease',
+    logoUrl: 'public/images/logo.png',
     heroImageUrl: ''
   },
   theme: {

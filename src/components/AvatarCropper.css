@@ -57,5 +57,5 @@
 
 .cropper-actions .primary {
   background: var(--accent-primary);
-  color: #fff;
+  color: var(--text-on-dark);
 }

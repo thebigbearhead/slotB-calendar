@@ -1,147 +1,294 @@
-# slotB 📅✨
+# 🎨 sLOt[B] - Photoshoot Booking Calendar
 
-slotB is a modern appointment calendar for creative studios. It ships with a React/Vite front-end, an Express API, SQLite persistence, user authentication, profile management, and a slick modal workflow for creating and editing bookings.
+> A beautiful, modern appointment calendar for creative studios with elegant warm theming
 
----
-
-## 🌟 Highlights
-
-- 🔐 **Auth out of the box** – JWT-based register/login plus password updates from the Profile modal.
-- 🗓️ **Bangkok-aware calendar** – every booking is normalized to the Bangkok timezone helpers in `src/utils/timezone.js`.
-- 🧑‍🎨 **Brandable UI** – override logos, colors, and copy via `config/app-config.json` without touching code.
-- 📸 **Profile tools** – avatar uploader with image cropper, ID tracking, and password reset.
-- 🛠️ **Admin dashboard** – elevated users get `/admin` for activity insights and user management.
-- 🐳 **Container ready** – Dockerfile + Compose stack keep the API, static build, config, and uploads portable.
+[![Version](https://img.shields.io/badge/version-0.1.7-coral.svg)](https://github.com/thebigbearhead/slotB-calendar)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Made with Love](https://img.shields.io/badge/made%20with-❤️-red.svg)](https://github.com/thebigbearhead)
 
 ---
 
-## 🧱 Tech Stack
+## ✨ Features
 
-| Layer        | Tech                                                                         |
-|--------------|------------------------------------------------------------------------------|
-| Front-end    | React 19 + Vite + React Router                                               |
-| Styling      | Custom CSS (Tokyo Night / Dracula palette)                                   |
-| API          | Express 5, JWT, bcrypt                                                       |
-| Database     | SQLite (`server/slotb.db` by default, configurable via `DATABASE_PATH`)      |
-| Auth Context | React Context + localStorage persistence                                     |
-| Dev Tooling  | ESLint 9, Vite dev server, Docker, npm scripts                               |
-
----
-
-## 🗂️ Project Map
-
-```
-slotB/
-├─ src/                     # React app (components, context, utils, styles)
-├─ server/                  # Express server, SQLite database file
-├─ config/app-config.json   # Branding + copy overrides
-├─ uploads/                 # User-uploaded avatars (served statically)
-├─ scripts/                 # Maintenance scripts (migrations, admin promotion)
-├─ public/                  # Static assets served by Vite
-├─ docker-compose.yml       # One-command stack with SQLite volume
-├─ Dockerfile               # Multi-stage production image
-├─ README.md                # (You are here)
-└─ slotB-backup.zip         # Handy snapshot of the current workspace (ignored by git)
-```
+- 🔐 **Secure Authentication** - JWT-based register/login with profile management
+- 📅 **Bangkok Timezone** - Automatic timezone normalization (configurable to any timezone)
+- 🎨 **Beautiful Theming** - Warm coral & burgundy palette with customizable colors
+- 👤 **User Profiles** - Avatar upload with image cropper, customizable profiles
+- 📊 **Activity Sidebar** - Real-time booking activity and statistics
+- 🛡️ **Admin Dashboard** - User management and system-wide booking oversight
+- 🐳 **Docker Ready** - One-command deployment with Docker Compose
+- 🎭 **Fully Customizable** - Single config file for colors, branding, and features
 
 ---
 
-## 🛠️ Prerequisites
+## 🚀 Quick Start
 
-- Node.js 20+
-- npm 10+
-- Optional: Docker 24+ with Docker Compose plugin
-
----
-
-## 🚀 Quick Start (local dev)
+### Local Development
 
 ```bash
-# 1. Install dependencies
+# 1️⃣ Clone the repository
+git clone https://github.com/thebigbearhead/slotB-calendar.git
+cd slotB-calendar
+
+# 2️⃣ Install dependencies
 npm install
 
-# 2. Copy env template and customize
-cp .env.example .env
-echo "JWT_SECRET=<your-strong-secret>" >> .env
+# 3️⃣ Start development (two terminals)
+# Terminal 1 - Backend
+npm run server
 
-# 3. Run the API + Vite dev server concurrently (two terminals)
-npm run server     # serves API on http://localhost:5000
-npm run dev        # serves front-end with hot reload on http://localhost:5173
+# Terminal 2 - Frontend  
+npm run dev
 ```
 
-Open http://localhost:5173, register a user, then start booking.
+🎉 Open `http://localhost:5554` and start booking!
 
----
-
-## ⚙️ Environment Variables
-
-| Variable          | Default | Purpose                                                                                       |
-|-------------------|---------|------------------------------------------------------------------------------------------------|
-| `SLOTB_HOST_PORT` | `5080`  | Host port exposed by Docker Compose (maps to container port 5000).                            |
-| `JWT_SECRET`      | `change-me` | Secret used by the API to sign JWTs. **Set a unique, strong value in every environment.** |
-| `DATABASE_PATH`   | `/data/slotb.db` (Docker) / `server/slotb.db` (local) | Controls where SQLite data lives. Override per deployment if needed. |
-
-You can also export `JWT_SECRET` or `DATABASE_PATH` before running any npm script to override the defaults without editing files.
-
----
-
-## 📦 Useful npm Scripts
-
-| Command                | Description                                                                    |
-|------------------------|--------------------------------------------------------------------------------|
-| `npm run dev`          | Start Vite dev server with hot reload (front-end only).                        |
-| `npm run server`       | Start Express API in watch mode (nodemon style) from `server/server.cjs`.      |
-| `npm run build`        | Production build via Vite (outputs to `dist/`).                                |
-| `npm run preview`      | Serve the built assets locally for smoke tests.                                |
-| `npm run start`        | Build then run the API (suitable for bare-metal deploys).                      |
-| `npm run migrate-db`   | Apply SQLite migrations / ensure schema (safe to run multiple times).          |
-| `npm run promote-admin -- <user>` | Promote an existing user (by username or email) to admin.          |
-
----
-
-## 🐳 Docker Workflow
+### Docker Deployment
 
 ```bash
-cp .env.example .env
-# edit SLOTB_HOST_PORT + JWT_SECRET
-docker compose up -d --build
+# One command to run everything
+docker-compose up -d
 ```
 
-What you get:
-- `slotb` service listening on `http://<host-ip>:${SLOTB_HOST_PORT}`.
-- Persistent SQLite stored inside the `slotb-data` volume (`/data/slotb.db`).
-- `config/` and `uploads/` are bind-mounted so branding and avatars survive rebuilds.
+🌐 Access at `http://localhost:5000`
 
-Stop and remove containers with:
+---
 
-```bash
-docker compose down          # stop
-docker compose down -v       # stop + delete slotb-data volume
+## 📚 Documentation
+
+📖 **[Complete Project Guide](PROJECT_GUIDE.md)** - Everything you need to know!
+
+- 🎨 **Theme Customization** - How to change colors and styling
+- 🐳 **Docker Deployment** - Complete Docker and deployment guide
+- ☁️ **Production Setup** - Deploy to VPS, cloud platforms, or containers
+- ⚙️ **Configuration** - All available settings and options
+- 👥 **User Management** - Create admins and manage users
+- 🛠️ **Development** - API endpoints and development workflow
+
+---
+
+## 🎨 Customization
+
+### Change Colors (Single File!)
+
+All colors are defined in **one place**: `src/styles/variables.css`
+
+```css
+/* Change primary accent color */
+--color-coral-pink: #FF3366;  /* Change to your brand color! */
+
+/* Change sidebar colors */
+--color-burgundy: #8B4367;    /* Activity sidebar background */
+--color-terracotta: #C07869;  /* User card background */
 ```
 
-Need to promote an admin inside the container?:
+**That's it!** Changes apply everywhere automatically. See [PROJECT_GUIDE.md](PROJECT_GUIDE.md#-theme--css-configuration) for details.
 
-```bash
-docker exec -it slotb \
-  sh -c "DATABASE_PATH=/data/slotb.db npm run migrate-db && DATABASE_PATH=/data/slotb.db npm run promote-admin -- myuser"
+### Change Branding
+
+Edit `config/app-config.json`:
+
+```json
+{
+  "app": {
+    "name": "Your Studio Name",
+    "tagline": "Your Custom Tagline",
+    "timezone": "America/New_York"
+  }
+}
 ```
 
 ---
 
-## 🧑‍💻 Developing Features
+## 🛠️ Tech Stack
 
-1. **Run both servers**: `npm run server` for API + `npm run dev` for the UI.
-2. **Auth context**: uses `localStorage` (`token` + `user`) so remember to clear storage if you mangle the schema.
-3. **API calls**: proxied via Vite (`/api/...`) so they hit the Express server during dev. No need to hardcode host URLs.
-4. **Styling**: Colors + shadows come from CSS variables in `src/index.css`. Update there to keep the palette consistent.
-5. **Brand overrides**: `config/app-config.json` drives the logo, app title, and tagline consumed via `ConfigContext`.
+| Layer        | Technology                                     |
+|--------------|------------------------------------------------|
+| **Frontend** | ⚛️ React 19, ⚡ Vite, 🎨 Custom CSS           |
+| **Backend**  | 🚂 Express.js, 🔐 JWT, 🔒 bcryptjs            |
+| **Database** | 🗄️ SQLite (portable, no setup needed)         |
+| **Styling**  | 🌈 CSS Variables, Montserrat Font             |
+| **Deploy**   | 🐳 Docker, Docker Compose                     |
+| **Utils**    | 📅 date-fns-tz, 🖼️ react-easy-crop            |
+
+---
+---
+
+## 📦 Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start Vite dev server (frontend with hot reload) |
+| `npm run server` | Start Express API backend |
+| `npm run build` | Build for production |
+| `npm start` | Build and run production server |
+| `npm run promote-admin` | Promote a user to admin |
+| `npm run migrate-db` | Run database migrations |
 
 ---
 
-## 📁 Data & Uploads
+## � Project Structure
 
-- `server/slotb.db` – default SQLite file for local dev. Add it to backups but keep it out of source control.
-- `uploads/` – avatar images saved via the profile modal. Ensure this folder remains writable in production.
+```
+slotB-calendar/
+├── 📂 src/                    # Frontend React application
+│   ├── components/           # UI components
+│   ├── context/              # React contexts (Auth, Config, Theme)
+│   ├── styles/               # 🎨 CSS files (variables.css here!)
+│   └── utils/                # Helper functions
+├── 📂 server/                 # Backend Express API
+│   ├── server.cjs            # Main server file
+│   ├── database.cjs          # Database operations
+│   └── configManager.cjs     # Config management
+├── 📂 config/                 # Application configuration
+│   └── app-config.json       # Branding & settings
+├── 📂 data/                   # Database files
+│   └── bookings.db           # SQLite database
+├── 📂 uploads/                # User uploaded files
+├── 📄 PROJECT_GUIDE.md       # 📚 Complete documentation
+├── 📄 docker-compose.yml     # Docker deployment
+└── 📄 package.json           # Dependencies & scripts
+```
+
+---
+
+## 👥 User Management
+
+### Create Admin User
+
+```bash
+# Register a user through the web interface first, then:
+npm run promote-admin
+
+# Follow the prompts to enter username
+```
+
+---
+
+## 🐳 Docker Details
+
+### Quick Commands
+
+```bash
+# Start application
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop application
+docker-compose down
+
+# Rebuild after changes
+docker-compose up -d --build
+```
+
+### Data Persistence
+
+All data is stored in Docker volumes:
+- `./data` - SQLite database
+- `./uploads` - User avatars
+- `./config` - Configuration files
+
+**Backup regularly**: `cp -r data data-backup`
+
+---
+
+## 🌍 Timezone Configuration
+
+Change timezone in `config/app-config.json`:
+
+```json
+{
+  "app": {
+    "timezone": "America/New_York"
+  }
+}
+```
+
+Supports all [IANA timezone identifiers](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+---
+
+## 🔒 Security Notes
+
+- 🔑 **Change JWT_SECRET** in production
+- 🔐 Use HTTPS in production (reverse proxy with Nginx/Caddy)
+- 🛡️ Keep dependencies updated: `npm audit`
+- 💾 Regular database backups recommended
+
+---
+
+## 🆘 Troubleshooting
+
+### Port Already in Use
+
+```bash
+# Find process using port
+lsof -i :5000
+
+# Kill the process
+kill -9 <PID>
+```
+
+### Database Issues
+
+```bash
+# Reset database (will delete all data!)
+rm data/bookings.db
+npm run server  # Will recreate database
+```
+
+### Upload Errors
+
+```bash
+# Ensure uploads directory exists and has correct permissions
+mkdir -p uploads
+chmod 755 uploads
+```
+
+---
+
+## � License
+
+MIT License - Feel free to use this project for personal or commercial purposes!
+
+---
+
+## 🙏 Acknowledgments
+
+Created with ❤️ by [@thebigbearhead](https://github.com/thebigbearhead)
+
+**Special thanks to:**
+- The React and Vite teams
+- The open-source community
+- Everyone who contributed ideas and feedback
+
+---
+
+## 🌟 Support
+
+If you find this project useful:
+
+- ⭐ Star the repository
+- 🐛 Report bugs via issues
+- 💡 Suggest features
+- 🤝 Contribute improvements
+- 📢 Share with others
+
+---
+
+## � Contact & Links
+
+- 🐙 **GitHub**: [@thebigbearhead](https://github.com/thebigbearhead)
+- 📖 **Documentation**: [PROJECT_GUIDE.md](PROJECT_GUIDE.md)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/thebigbearhead/slotB-calendar/issues)
+
+---
+
+**Made with 💖 and lots of ☕**
+
+**Version 0.1.7** | Last Updated: November 2025
 - `slotB-backup.zip` – ad-hoc archive of the repo (ignored by git); regenerate whenever you want a snapshot:  
   `zip -r slotB-backup.zip . -x 'node_modules/**' 'dist/**' 'slotB-backup.zip'`
 

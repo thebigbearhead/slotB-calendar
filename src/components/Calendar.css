@@ -1,27 +1,33 @@
 .calendar-app {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--bg-gradient-secondary);
+  overflow: hidden;
 }
 
 .calendar-container {
+  --calendar-padding: clamp(16px, 2vw, 28px);
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0; /* Prevents flex item from overflowing */
+  min-width: 0;
   background: var(--surface-calendar);
-  padding: clamp(16px, 2vw, 28px);
+  padding: 0;
+  gap: 0;
+  height: 100vh;
+  overflow: hidden;
+  box-shadow: none;
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  padding: clamp(12px, 1.5vw, 18px) 0;
-  background: var(--bg-gradient-primary);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 8px var(--shadow-light);
+  margin: 0;
+  padding: clamp(12px, 1.5vw, 20px) var(--calendar-padding, 16px);
+  background: var(--calendar-header-bg);
+  border-bottom: none;
+  box-shadow: none;
   gap: 24px;
 }
 
@@ -40,7 +46,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-on-dark);
   font-size: 1.3rem;
   box-shadow: 0 8px 16px var(--shadow-light);
   overflow: hidden;
@@ -60,8 +66,8 @@
 }
 
 .nav-button {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: none;
+  border: none;
   border-radius: 6px;
   width: 40px;
   height: 40px;
@@ -69,14 +75,16 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 18px;
-  color: var(--text-secondary);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
   transition: all 0.2s ease;
 }
 
 .nav-button:hover {
-  background: var(--bg-tertiary);
-  border-color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-primary);
+  transform: scale(1.1);
 }
 
 .month-year {
@@ -88,19 +96,23 @@
 
 .user-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
   color: var(--text-secondary);
   flex: 1;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
-.user-identity {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
+.user-profile-link {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.user-profile-link:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 .user-text {
@@ -113,23 +125,25 @@
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .branding-meta {
   color: var(--text-secondary);
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .app-title {
   margin: 0;
   font-weight: 700;
+  font-size: 1.8rem;
   color: var(--text-primary);
 }
 
 .app-tagline {
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .user-avatar {
@@ -164,11 +178,11 @@
 
 .pill-button {
   border: none;
-  border-radius: 999px;
-  padding: 8px 16px;
+  border-radius: 20px;
+  padding: 10px 20px;
   text-decoration: none;
   background: var(--accent-primary);
-  color: #fff;
+  color: var(--text-on-dark);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -206,10 +220,11 @@
   background: var(--danger-color);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: 20px;
+  padding: 10px 20px;
   cursor: pointer;
   font-size: 0.9rem;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
@@ -273,13 +288,14 @@
 
 .calendar-grid {
   flex: 1;
-  margin: 20px;
+  margin: clamp(12px, 1.5vw, 20px);
+  padding: clamp(12px, 1.5vw, 20px);
   display: flex;
   flex-direction: column;
   background: var(--bg-primary);
-  border-radius: 18px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 12px 32px var(--shadow-light);
+  border-radius: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0 16px 36px var(--shadow-light);
   overflow: hidden;
   min-height: 0;
 }
@@ -288,7 +304,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: var(--surface-weekdays);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 .weekday {
@@ -303,37 +319,43 @@
 
 .days-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
   flex: 1;
   background: var(--surface-calendar-grid);
+  min-height: 0;
 }
 
 .day-cell {
-  min-height: clamp(96px, 14vw, 160px);
-  border-right: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
+  min-height: 0;
+  border-right: 1px solid rgba(128, 128, 128, 0.15);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
   padding: clamp(6px, 1vw, 12px);
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
   isolation: isolate;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .day-cell:hover {
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .day-cell.other-month {
   color: var(--text-muted);
-  background: var(--bg-tertiary);
+  background: rgba(248, 244, 255, 0.7);
 }
 
 .day-cell.other-month::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 12, 20, 0.65);
+  background: rgba(255, 255, 255, 0.5);
   z-index: 0;
 }
 
@@ -343,15 +365,16 @@
 }
 
 .day-cell.today {
-  background: rgba(122, 162, 247, 0.16);
+  background: rgba(255, 179, 193, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(255, 146, 174, 0.3);
 }
 
 .day-cell.today .day-number {
   background: var(--accent-primary);
   color: white;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -373,6 +396,7 @@
   gap: 2px;
   position: relative;
   z-index: 1;
+  min-height: 0;
 }
 
 .booking-item {
@@ -384,12 +408,12 @@
   cursor: pointer;
   transition: transform 0.2s ease;
   overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow-light);
+  box-shadow: 0 4px 10px var(--shadow-light);
 }
 
 .booking-item:hover {
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px var(--shadow-medium);
+  box-shadow: 0 6px 14px var(--shadow-medium);
 }
 
 .booking-time {
@@ -416,6 +440,9 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .calendar-app {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
     flex-direction: column;
   }
 
@@ -423,10 +450,18 @@
     width: 100%;
     height: auto;
     order: 1;
+    overflow: visible;
   }
 
   .calendar-grid {
-    margin: 16px;
+    flex: initial;
+    height: auto;
+    margin: 0;
+    padding: 16px;
+  }
+
+  .days-grid {
+    grid-auto-rows: minmax(110px, auto);
   }
 }
 
@@ -441,6 +476,18 @@
     gap: 16px;
   }
 
+  .calendar-grid {
+    border-radius: 18px;
+  }
+
+  .days-grid {
+    grid-auto-rows: minmax(96px, auto);
+  }
+
+  .day-cell {
+    min-height: clamp(80px, 20vw, 130px);
+  }
+
   .calendar-nav,
   .user-info {
     justify-content: center;
@@ -449,8 +496,9 @@
 
 @media (max-width: 768px) {
   .calendar-grid {
-    margin: 12px 0 20px;
+    margin: 0;
     border-radius: 16px;
+    padding: 12px;
   }
 
   .calendar-header {
@@ -474,7 +522,7 @@
   }
 
   .day-cell {
-    min-height: clamp(72px, 22vw, 110px);
+    min-height: clamp(72px, 24vw, 120px);
     padding: 4px;
   }
 
@@ -495,10 +543,6 @@
 @media (max-width: 640px) {
   .calendar-nav {
     justify-content: center;
-  }
-
-  .user-identity {
-    width: 100%;
   }
 
   .profile-modal-content {

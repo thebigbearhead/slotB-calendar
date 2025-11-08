@@ -331,7 +331,7 @@ app.delete('/api/bookings/:id', authenticateToken, (req, res) => {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Photoshoot Calendar API is running' });
+  res.json({ status: 'OK', message: 'sLOt[B] API is running' });
 });
 
 // Profile routes
