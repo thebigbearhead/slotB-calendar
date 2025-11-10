@@ -39,7 +39,8 @@ const ActivitySidebar = ({ onProfileClick }) => {
 
       if (response.ok) {
         const data = await response.json();
-        setRecentActivity(data);
+        // Show only the 2 most recent items
+        setRecentActivity(data.slice(0, 2));
       } else {
         setError('Failed to fetch recent activity');
       }

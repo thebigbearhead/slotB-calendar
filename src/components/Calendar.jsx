@@ -179,6 +179,11 @@ const Calendar = () => {
                           e.stopPropagation();
                           handleBookingClick(booking);
                         }}
+                        style={{
+                          backgroundImage: booking.user_profile_picture 
+                            ? `url(${booking.user_profile_picture})` 
+                            : 'none'
+                        }}
                       >
                         <div className="booking-time">{booking.start_time}</div>
                         <div className="booking-title">{booking.title}</div>

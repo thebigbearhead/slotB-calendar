@@ -48,7 +48,13 @@
   --color-warm-beige: #F4D8A1;       /* Light text on dark backgrounds, warm accents */
   --color-terracotta: #C07869;       /* Sidebar user card background */
   --color-burgundy: #8B4367;         /* Sidebar content background */
-  --color-dark-maroon: #4A1F33;      /* Dark warm accent, text on light backgrounds */
+  --color-dark-maroon: #4A1F33;  
+  --color-dark-pastel-pink: #896C6C;
+  --color-dark-pastel-cblue: #0f304c;
+  --color-dark-pastel-mediumpink: #cda59c;
+  --color-dark-pastel-wowblue: #C2E2FA;
+  --color-dark-pastel-brightyellow: #FFF1CB;
+      /* Dark warm accent, text on light backgrounds */
   
   /* ════════════════════════════════════════════════════════════
      🎭 BACKGROUND COLORS - Solid & Gradients
@@ -100,11 +106,13 @@
      primary > secondary > muted
      ════════════════════════════════════════════════════════════ */
   
-  --text-primary: #FFFFFF;                    /* Main text - High contrast, most important content */
+  --text-primary: #faeabe;                    /* Main text - High contrast, most important content */
   --text-secondary: var(--color-warm-beige);  /* Secondary text - Less prominent but still readable */
-  --text-muted: #B8A8B0;                      /* Muted text - Subtle, supporting information */
+  --text-muted: #ad9ea5;                      /* Muted text - Subtle, supporting information */
   --text-light: var(--color-warm-beige);      /* Light warm text - Special use cases */
-  --text-on-dark: #FFFFFF;                    /* Text on dark backgrounds - Ensures readability */
+  --text-on-dark: #FFF1CB;
+  --text-pastel-light: #cde7ff;
+  --text-pastel-dark: #423756;                  /* Text on dark backgrounds - Ensures readability */
   
   /* ════════════════════════════════════════════════════════════
      🔲 BORDER COLORS - Outlines & Dividers
@@ -127,7 +135,7 @@
      Draws user attention to actionable items.
      ════════════════════════════════════════════════════════════ */
   
-  --accent-primary: var(--color-coral-pink);           /* Primary action buttons, active states */
+  --accent-primary: var(--color-dark-pastel-cblue);           /* Primary action buttons, active states */
   --accent-secondary: var(--color-mauve);              /* Secondary buttons, less prominent actions */
   --accent-tertiary: var(--color-terracotta);          /* Tertiary accents, subtle highlights */
   --accent-gradient: var(--bg-gradient-accent);        /* Gradient accent for special buttons */
@@ -143,7 +151,7 @@
      ════════════════════════════════════════════════════════════ */
   
   /* ✅ Success - Positive actions, completed states */
-  --success-color: #7BCB9E;                   /* Success messages, confirmed bookings */
+  --success-color: #AF3E3E;                   /* Success messages, confirmed bookings */
   --success-light: rgba(123, 203, 158, 0.15); /* Light success background */
   
   /* ❌ Danger - Destructive actions, errors */
@@ -181,7 +189,7 @@
      ════════════════════════════════════════════════════════════ */
   
   /* 📊 Activity Sidebar - Right panel with recent bookings */
-  --sidebar-header-bg: var(--color-warm-beige);            /* Top header - Warm beige background */
+  --sidebar-header-bg: var(--color-dark-pastel-wowblue);            /* Top header - Warm beige background */
   --sidebar-user-card-bg: var(--color-terracotta);         /* User profile card - Terracotta */
   --sidebar-hover-bg: rgba(192, 120, 105, 0.8);           /* User card hover state - Darker terracotta */
   --sidebar-content-bg: var(--color-burgundy);             /* Main content area - Burgundy */
@@ -217,7 +225,8 @@
   --radius-md: 12px;      /* Medium radius - Standard buttons */
   --radius-lg: 16px;      /* Large radius - Cards */
   --radius-xl: 20px;      /* Extra large - Pills, badges */
-  --radius-2xl: 24px;     /* 2X large - Large containers */
+  --radius-2xl: 24px;
+  --radius-xxl: 42px;     /* 2X large - Large containers */
   
   /* ════════════════════════════════════════════════════════════
      ⚡ TRANSITIONS - Animation Timing

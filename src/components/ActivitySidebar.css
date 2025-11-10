@@ -13,7 +13,7 @@
 .sidebar-header {
   padding: 20px;
   border-bottom: none;
-  background: var(--sidebar-header-bg);
+  background: var(--color-dark-pastel-cblue);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,7 +24,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: var(--color-dark-maroon);
+  color: var(--color-dark-pastel-wowblue);
 }
 
 .sidebar-user-card {
@@ -55,8 +55,8 @@
   font-size: 1.1rem;
   font-weight: 700;
   overflow: hidden;
-  border: 2px solid #FFD700;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 4px solid #4ED7F1;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
 .card-avatar img {
@@ -170,7 +170,7 @@
   gap: 12px;
   padding: 12px;
   margin-bottom: 8px;
-  background: var(--bg-secondary);
+  background: var(--color-dark-pastel-brightyellow);
   border-radius: 8px;
   border: 1px solid var(--border-light);
   transition: all 0.2s ease;
@@ -252,8 +252,8 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 2px 2px;
+  border-radius: 12px;
   display: inline-block;
   margin-bottom: 4px;
 }
@@ -278,19 +278,20 @@
   color: var(--text-muted);
   line-height: 1.4;
   margin-top: 4px;
+
 }
 
 .activity-stats {
-  margin-top: 24px;
-  padding-top: 20px;
+  margin-top: 6px;
+  padding-top: 4px;
   border-top: 1px solid var(--border-light);
 }
 
 .activity-stats h4 {
-  margin: 0 0 12px 0;
+  margin: 0 0 6px 0;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--color-dark-maroon);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -304,8 +305,8 @@
 .stat-item {
   text-align: center;
   padding: 12px 8px;
-  background: var(--bg-secondary);
-  border-radius: 8px;
+  background: var(--color-dark-pastel-brightyellow);
+  border-radius: 14px;
   border: 1px solid var(--border-light);
   transition: all 0.2s ease;
 }
@@ -318,7 +319,7 @@
 .stat-number {
   font-size: 20px;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--color-dark-maroon);
   margin-bottom: 4px;
 }
 

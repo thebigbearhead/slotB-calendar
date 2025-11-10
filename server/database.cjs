@@ -235,12 +235,24 @@ class Database {
   }
 
   getBookingsByUser(userId, callback) {
-    const sql = 'SELECT * FROM bookings WHERE user_id = ? ORDER BY date, start_time';
+    const sql = `
+      SELECT b.*, u.username, u.profile_picture 
+      FROM bookings b 
+      JOIN users u ON b.user_id = u.id 
+      WHERE b.user_id = ? 
+      ORDER BY b.date, b.start_time
+    `;
     this.db.all(sql, [userId], callback);
   }
 
   getBookingsByDate(date, callback) {
-    const sql = 'SELECT b.*, u.username FROM bookings b JOIN users u ON b.user_id = u.id WHERE b.date = ? ORDER BY start_time';
+    const sql = `
+      SELECT b.*, u.username, u.profile_picture 
+      FROM bookings b 
+      JOIN users u ON b.user_id = u.id 
+      WHERE b.date = ? 
+      ORDER BY b.start_time
+    `;
     this.db.all(sql, [date], callback);
   }
 
